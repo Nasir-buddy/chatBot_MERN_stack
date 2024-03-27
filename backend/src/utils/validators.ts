@@ -8,7 +8,6 @@ export const validate = (validations: ValidationChain[]) => {
             if(!result.isEmpty()){
                 break;
             }
-
         }
         const errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -17,10 +16,8 @@ export const validate = (validations: ValidationChain[]) => {
         res.status(422).json({ errors: errors.array() });
     };
 };
-export const signupValidator = [
-    body("name")
-        .notEmpty()
-        .withMessage("Name is required"),
+
+export const loginValidator = [
     body("email")
         .trim()
         .isEmail()
@@ -30,3 +27,12 @@ export const signupValidator = [
         .isLength({ min: 6 })
         .withMessage("password should contain atleast 6 character.")
 ];
+
+
+export const signupValidator = [
+    body("name")
+        .notEmpty()
+        .withMessage("Name is required"),
+    ...loginValidator,
+];
+
