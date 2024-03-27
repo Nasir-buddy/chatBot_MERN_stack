@@ -44,6 +44,14 @@ export const userLogin = async (req: Request, res: Response, next: NextFunction)
         }
         // token will create after sussessfull login
         const token = createToken(user._id.toString(), user.email, "7d");
+        const expires = new Date();
+        expires.setDate(expires.getDate() + 7);
+        res.cookie("auth.token", token, { path: '/',
+            domain: 'localhost', 
+            expires, 
+            httpOnly: true , 
+            signed: true 
+        });
 
         return res.status(200).json({ message: "OK", id: user._id.toString() });
     } catch (error) {
