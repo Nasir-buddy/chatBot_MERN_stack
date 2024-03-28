@@ -25,7 +25,7 @@ export const userSignup = async (req: Request, res: Response, next: NextFunction
         const user = new User({ name, email, password: hashedPassword });
         await user.save();
 
-        // create token and store cookie 
+        // create token and store cookie  
         // clearing the cookie 
         res.clearCookie(COOKIE_NAME, {
             httpOnly: true,
@@ -37,15 +37,15 @@ export const userSignup = async (req: Request, res: Response, next: NextFunction
         const token = createToken(user._id.toString(), user.email, "7d");
         const expires = new Date();
         expires.setDate(expires.getDate() + 7);
-        res.cookie(COOKIE_NAME, token, { 
+        res.cookie(COOKIE_NAME, token, {
             path: '/',
-            domain: 'localhost', 
-            expires, 
-            httpOnly: true , 
-            signed: true 
+            domain: 'localhost',
+            expires,
+            httpOnly: true,
+            signed: true
         });
 
-        return res.status(200).json({ message: "OK", id: user._id.toString() });
+        return res.status(200).json({ message: "OK", name: user.name, email: user.email });
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: "Internal Server Error" });
@@ -75,15 +75,15 @@ export const userLogin = async (req: Request, res: Response, next: NextFunction)
         const token = createToken(user._id.toString(), user.email, "7d");
         const expires = new Date();
         expires.setDate(expires.getDate() + 7);
-        res.cookie(COOKIE_NAME, token, { 
+        res.cookie(COOKIE_NAME, token, {
             path: '/',
-            domain: 'localhost', 
-            expires, 
-            httpOnly: true , 
-            signed: true 
+            domain: 'localhost',
+            expires,
+            httpOnly: true,
+            signed: true
         });
 
-        return res.status(200).json({ message: "OK", id: user._id.toString() });
+        return res.status(200).json({ message: "OK", name: user.name, email: user.email });
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: "Internal Server Error" });
