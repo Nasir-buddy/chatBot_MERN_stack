@@ -40,17 +40,17 @@ const ChatItem = ({
     (<Box
       sx={{
         display: "flex",
-        p: 2,
+        p: 1,
         bgcolor: "#004d5612",
-        gap: 2,
+        gap:1.5,
         borderRadius: 2,
-        my: 1,
+        my: 2,
       }}
     >
       <Avatar sx={{ ml: "0" }}>
         <img src="openai.png" alt="openai" width={"30px"} />
       </Avatar>
-      <Box>
+      <Box >
         {!messageBlocks && (
           <Typography sx={{ fontSize: "20px" }}>{content}</Typography>
         )}
@@ -58,7 +58,7 @@ const ChatItem = ({
           messageBlocks.length &&
           messageBlocks.map((block) =>
             isCodeBlock(block) ? (
-              <SyntaxHighlighter style={coldarkDark} language="javascript">
+              <SyntaxHighlighter customStyle={{maxWidth:'64vw'}} style={coldarkDark} language="javascript">
                 {block}
               </SyntaxHighlighter>
             ) : (
