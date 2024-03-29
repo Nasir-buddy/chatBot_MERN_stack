@@ -9,7 +9,7 @@ import { Toaster } from 'react-hot-toast'
 import { StrictMode } from 'react'
 import axios from 'axios'
 
-axios.defaults.baseURL = "http://localhost:5000/api/v1";
+axios.defaults.baseURL = "https://chat-bot-mern-stack.vercel.app/";
 axios.defaults.withCredentials = true;
 const theme = createTheme({
   typography: {
