@@ -9,6 +9,15 @@ export const loginUser = async (email: string, password: string) => {
   return data;
 };
 
+export const signupUser = async (name: string, email: string, password: string) => {
+  try {
+    const res = await axios.post("/user/signup", { name, email, password });
+    const data = await res.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 export const checkAuthStatus = async () => {

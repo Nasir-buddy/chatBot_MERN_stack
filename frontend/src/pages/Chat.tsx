@@ -58,7 +58,7 @@ const Chat = () => {
     if(!auth?.user){
       return navigate("/login")
     }
-  }, [auth])
+  }, [auth]);
   return (
     <Box
       sx={{
