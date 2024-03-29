@@ -6,7 +6,6 @@ import { createTheme, ThemeProvider } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext.tsx'
 import { Toaster } from 'react-hot-toast'
-import { StrictMode } from 'react'
 import axios from 'axios'
 
 axios.defaults.baseURL = "https://chat-bot-mern-stack.vercel.app/";
