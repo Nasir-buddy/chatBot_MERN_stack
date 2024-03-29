@@ -1,17 +1,18 @@
-import { Avatar, Box, Button, Typography } from '@mui/material'
+import { Avatar, Box, Button, IconButton, Typography } from '@mui/material'
 import React from 'react'
 import { useAuth } from '../context/AuthContext'
 import { red } from '@mui/material/colors';
 import ChatItem from '../components/chat/ChatItem';
+import { IoMdSend } from 'react-icons/io';
 const chatMessage = [
-    { "role": "User", "content": "Hi there, how can you assist me today?" },
-    { "role": "assistant", "content": "Hello! I'm here to help. What do you need assistance with?" },
-    { "role": "User", "content": "I need help with setting up my email." },
-    { "role": "assistant", "content": "Sure thing! Could you please provide me with the email service provider you're using?" },
-    { "role": "User", "content": "I'm using Gmail." },
-    { "role": "assistant", "content": "Great! I'll guide you through the setup process step by step." },
-    { "role": "User", "content": "Thank you!" },
-    { "role": "assistant", "content": "You're welcome. Let me know if there's anything else I can assist you with." }
+  { "role": "User", "content": "Hi there, how can you assist me today?" },
+  { "role": "assistant", "content": "Hello! I'm here to help. What do you need assistance with?" },
+  { "role": "User", "content": "I need help with setting up my email." },
+  { "role": "assistant", "content": "Sure thing! Could you please provide me with the email service provider you're using?" },
+  { "role": "User", "content": "I'm using Gmail." },
+  { "role": "assistant", "content": "Great! I'll guide you through the setup process step by step." },
+  { "role": "User", "content": "Thank you!" },
+  { "role": "assistant", "content": "You're welcome. Let me know if there's anything else I can assist you with." }
 ]
 const Chat = () => {
   const auth = useAuth();
@@ -91,10 +92,37 @@ const Chat = () => {
             scrollBehavior: "smooth",
           }}
         >
-          {chatMessage.map((chat, index)=>(
-           <ChatItem content={chat.content} role={chat.role} key={index} />
+          {chatMessage.map((chat, index) => (
+            <ChatItem content={chat.content} role={chat.role} key={index} />
           ))}
         </Box>
+        <div
+          style={{
+            width: "100%",
+            borderRadius: 8,
+            backgroundColor: "rgb(17,27,39)",
+            display: "flex",
+            margin: "auto",
+          }}
+        >
+          {" "}
+          <input
+            // ref={inputRef}
+            type="text"
+            style={{
+              width: "100%",
+              backgroundColor: "transparent",
+              padding: "30px",
+              border: "none",
+              outline: "none",
+              color: "white",
+              fontSize: "20px",
+            }}
+          />
+          <IconButton sx={{ color: "white", mx: 1 }}>
+            <IoMdSend />
+          </IconButton>
+        </div>
       </Box>
     </Box>
   )
