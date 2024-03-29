@@ -19,15 +19,15 @@ const theme = createTheme({
 })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <Toaster position='top-right' />
-          <App />
-        </ThemeProvider>
-      </BrowserRouter>
-    </AuthProvider>
-  </StrictMode>
+
+  <AuthProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Toaster position='top-right' />
+        <App />
+      </ThemeProvider>
+    </BrowserRouter>
+  </AuthProvider>
+
 
 )
